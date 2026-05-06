@@ -1,5 +1,11 @@
 
+Movies-Gpt :-
 
+Create React app using vite.
+Configured TailwindCSS
+Header
+Login Form
+Sign up Form
 
 
 
