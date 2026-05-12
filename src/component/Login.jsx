@@ -1,9 +1,17 @@
-import { useState } from "react";
+import { useRef, useState } from "react";
 import Header from "./Header"
+import { checkValidData } from "../utils/Validate";
+import { createUserWithEmailAndPassword, signInWithEmailAndPassword, updateProfile } from "firebase/auth";
+import { auth } from "../utils/firebase";
+import { useNavigate } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { addUser } from "../utils/UserSlice";
+
+
 
 //the explanation is below the export login okay!!!
 {/*
-    pehle state variable singin true he but jese he hum togglebtn pe click karenge kya hoga ki 
+    pehle state variable signin true he but jese he hum togglebtn pe click karenge kya hoga ki 
     to setcondtion me !state he matlab true hoga to btn dabane ke bad vo false hoga not condition ke vajh se 
     to baki niche ab sare condtion chk karenge ki true he ya false he aur us hisab se vo text show hoga ok!!
     
@@ -13,8 +21,99 @@ import Header from "./Header"
 const Login = () => 
 {
   // State variable: true = Sign In form, false = Sign Up form
-  const [isSignInForm, setSignInForm] = useState(true);
+    const [isSignInForm, setSignInForm] = useState(true);
+  
+    const [ErrMessage, setErrMessage] = useState(null);
 
+    const navigate = useNavigate();
+    const dispatch = useDispatch();
+
+    {/*
+        we have use this userRef() hook which is use to ref to the input box and then it will give 
+        us an object of the input box which will contain the value that we are going to write int that input box.
+        to ref input box we create a useRef() hook first and then in the input box we write ref={whatever thing we are trying to ref}
+        
+        when we click on the handleBtnClick()(sign in) we want to fetch the value 
+        and check if they are valid or not(basically we are performing validation)
+        and to fetch the value we have use useRef() hook
+        */}
+    const name = useRef(null);
+    const email = useRef(null);
+    const password = useRef(null);
+    
+    const handleBtnClick = () => { 
+
+        //console.log(name.current.value)
+       // console.log(email.current.value);
+       // console.log(password.current.value);
+
+        const message = checkValidData(
+         email.current.value,
+         password.current.value
+        );
+        
+        setErrMessage(message);
+        // console.log(message);
+
+        if (message) return;
+
+        if (!isSignInForm) {
+            //sign up Logic
+            createUserWithEmailAndPassword(auth, email.current.value, password.current.value)
+              .then((userCredential) => {
+                // Signed up
+                  const user = userCredential.user;
+                  console.log(user);
+
+                  updateProfile(user, {
+                    displayName: "name.current.value",
+                    photoURL:
+                      "https://lh3.googleusercontent.com/a/ACg8ocKQUFrEKCcRwazmAgfhLxBhpQkVDu-qakhVKVscLBc55ohzIRK-=s360-c-no",
+                  })
+                    .then(() => {
+                        // Profile updated!
+                         const { uid, email, displayName , photoURL } = auth.currentUser;
+                        dispatch(addUser({ uid: uid, email: email, displayName: displayName, photoURL: photoURL }));
+                        
+                        navigate("/browse");
+                    })
+                    .catch((error) => {
+                      // An error occurred
+                        setErrMessage(error.message);
+                    });
+                  
+              })
+              .catch((error) => {
+                const errorCode = error.code;
+                  const errorMessage = error.message;
+                  setErrMessage(errorCode + "-" + errorMessage);
+                // ..
+              });
+
+        } else {
+            
+            //sign in logic
+
+            signInWithEmailAndPassword(auth, email.current.value, password.current.value)
+              .then((userCredential) => {
+                // Signed in
+                  const user = userCredential.user;
+                  console.log(user);
+                  navigate("/browse");
+                // ...
+              })
+              .catch((error) => {
+                const errorCode = error.code;
+                  const errorMessage = error.message;
+                  setErrMessage(errorCode + "-" + errorMessage);
+              });
+
+        }
+
+
+
+    };
+    
   /* 
     Toggle function:
     Flips between Sign In and Sign Up.
@@ -36,7 +135,7 @@ const Login = () =>
           />
         </div>
 
-        <form className="w-3/12 absolute p-12  my-36 mx-auto right-0 left-0 text-white rounded-lg bg-black opacity-75 ">
+        <form onSubmit={(e)=> {e.preventDefault()}} className="w-3/12 absolute p-12  my-36 mx-auto right-0 left-0 text-white rounded-lg bg-black opacity-75 ">
           <h1 className="font-bold text-3xl py-4">
             {/* Heading changes depending on state */}
             {isSignInForm ? "Sign In" : "sign Up"}
@@ -44,23 +143,27 @@ const Login = () =>
 
           {/* Show Name field only when Sign Up */}
           {!isSignInForm && (
-            <input
+                      <input
+                           ref={name}
               type="text"
               placeholder="plz Enter your Name "
               className="p-4 my-4 w-full bg-gray-700"
             />
           )}
-          <input
+                  <input
+                      ref={email}
             type="email"
             placeholder="plz Enter your EmailId "
             className="p-4 my-4 w-full bg-gray-700"
           />
-          <input
+                  <input
+                      ref={password}
             type="password"
             placeholder="Enter your password"
             className="p-4 my-4 w-full bg-gray-700"
-          />
-          <button className="p-4 my-6 bg-red-700 w-full rounded-lg">
+                  />
+                  <p className="text-red-800 font-bold text-lg py-2">{ErrMessage}</p>
+          <button className="p-4 my-6 bg-red-700 w-full rounded-lg" onClick={handleBtnClick}>
             {/* Heading changes depending on state */}
             {isSignInForm ? "Sign In" : "sign Up"}
           </button>
