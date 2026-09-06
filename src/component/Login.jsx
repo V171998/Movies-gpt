@@ -25,7 +25,7 @@ const Login = () =>
   
     const [ErrMessage, setErrMessage] = useState(null);
 
-    const navigate = useNavigate();
+    
     const dispatch = useDispatch();
 
     {/*
@@ -75,7 +75,7 @@ const Login = () =>
                          const { uid, email, displayName , photoURL } = auth.currentUser;
                         dispatch(addUser({ uid: uid, email: email, displayName: displayName, photoURL: photoURL }));
                         
-                        navigate("/browse");
+                        
                     })
                     .catch((error) => {
                       // An error occurred
@@ -98,8 +98,7 @@ const Login = () =>
               .then((userCredential) => {
                 // Signed in
                   const user = userCredential.user;
-                  console.log(user);
-                  navigate("/browse");
+                  
                 // ...
               })
               .catch((error) => {
