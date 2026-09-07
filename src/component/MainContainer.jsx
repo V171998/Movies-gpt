@@ -13,17 +13,17 @@ const MainContainer = () => {
     // if the value is null return from there
 
     if (movies === null) return;
-    const mainMovies = movies[0];
-    console.log(mainMovies);
+    const mainMovie = movies[0];
+    console.log(mainMovie);
 
-    const {original_title , overview } = mainMovies;
+    const { original_title, overview, id } = mainMovie;
 
-  return (
-      <div>
-          <VideoTitle title ={original_title} overview={overview} />
-          <VideoBackground/>
-    </div>
-  )
-}
+    return (
+        <div>
+            <VideoTitle title={original_title} overview={overview} />
+            <VideoBackground movieId={id} />
+        </div>
+    );
+};
 
 export default MainContainer;
