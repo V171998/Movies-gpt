@@ -5,6 +5,8 @@ import { API_OPTIONS } from '../utils/constant';
 import { useDispatch } from 'react-redux';
 import { addnowPlayingMovies } from '../utils/movieSlice';
 import useNowPlayingMovies from '../hooks/useNowPlayingMovies';
+import MainContainer from './MainContainer';
+import SecondaryContainer from './SecondaryContainer';
 
 const Browse = () => {
 
@@ -12,7 +14,9 @@ const Browse = () => {
 
   return (
     <div>
-      <Header/>
+      <Header />
+      <MainContainer />
+      <SecondaryContainer/>
     </div>
   )
 }
