@@ -19,6 +19,13 @@
 - Unsubscribed to the onAuthStateChanged 
 - Register TMDB API & create an app & get access token 
 - Get Data from TMDB now playing movies list API 
+- Custom Hook for Now playing Movies
+- Create movieSlice
+- Update Store with movies Data
+- planning for MainCotainer & scondary Conatainer
+- Fetch Data for Trailer Video Data
+-Embedded the Youtube video & make it autoplay and mute
+- added tailwind classed to make it look good
 
 
 
