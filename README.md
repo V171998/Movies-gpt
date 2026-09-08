@@ -24,7 +24,7 @@
 - Update Store with movies Data
 - planning for MainCotainer & scondary Conatainer
 - Fetch Data for Trailer Video Data
--Embedded the Youtube video & make it autoplay and mute
+- Embedded the Youtube video & make it autoplay and mute
 - added tailwind classed to make it look good
 
 

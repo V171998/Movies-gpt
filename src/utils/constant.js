@@ -10,3 +10,6 @@ export const Logo =
         "Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJjMTQwY2JkYTBiOTVlNTc0NmJjN2EzNTZlNjVmMDAwZCIsIm5iZiI6MTc4ODYwMzk3MC4yNTMsInN1YiI6IjZhOWJlZTQyNjQ3NTA0NTk3OWI3OTk1YyIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.ARYjsfS_hqiMVRtQoaViG-_5umGsBLAIeMgHCptJoOY",
     },
   };
+
+
+  export const Image_CDN_URL = "https://image.tmdb.org/t/p/w780/";
