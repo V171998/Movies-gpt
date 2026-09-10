@@ -6,6 +6,7 @@ import { auth } from "../utils/firebase";
 import { useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { addUser } from "../utils/UserSlice";
+import { BG_IMG_URL } from "../utils/constant";
 
 
 
@@ -129,7 +130,7 @@ const Login = () =>
 
         <div className="absolute">
           <img
-            src="https://assets.nflxext.com/ffe/siteui/vlv3/5efeb1fd-55d2-4799-8d38-e59e15858b9c/web/IN-en-20260427-TRIFECTA-perspective_0933b420-0cb6-4e67-8e9d-3224dc64b517_medium.jpg"
+            src={BG_IMG_URL}
             alt="background-logo"
           />
         </div>
