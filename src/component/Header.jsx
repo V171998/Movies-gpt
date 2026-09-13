@@ -64,15 +64,15 @@ const Header = () => {
         }
   
   return (
-    <div className="absolute w-screen px-8 py-2 bg-linear-to-b from-black z-10 flex justify-between">
-      <img className="w-44" src={Logo} alt="netflix-logo" />
+    <div className="absolute w-screen px-8 py-2 bg-linear-to-b from-black z-10 flex flex-col md:flex-row  justify-between">
+      <img className="w-44 mx-auto md:mx-0" src={Logo} alt="netflix-logo" />
 
       {user && (
-        <div className="flex p-2">
+        <div className="flex p-2 justify-between">
           <button className="py-2 px-4 mx-4 my-2 border border-white  rounded-lg" onClick={handleGptSearchClick}>
             GPT-SEARCH
           </button>
-          <img className="h-12 w-12" alt="userIcon" src={user?.photoURL} />
+          <img className="hidden md:block  h-12 w-12" alt="userIcon" src={user?.photoURL} />
           <button className="font-bold text-white " onClick={handleSignOut}>
             [sign Out]
           </button>

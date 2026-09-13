@@ -32,7 +32,15 @@
 - TMDB IMAGE CDN_URL
 - usePopularMovies & useTopRatedMovies Custom Hooks 
 - Building GptSearch 
-- Building Multi Language Page
+- GPT Gemini AI API key
+- GPT Search API Call
+- fetched getMovieSuggestions from TMDB
+- Created gptSlices added data 
+- Resused MovieList Component to make movie suggestion container
+- Memoization
+- Added .env file
+- Added .env file to getIgnore 
+- Made our site responsive
 
 
 

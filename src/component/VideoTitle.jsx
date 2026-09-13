@@ -3,13 +3,15 @@ import React from 'react'
 
 const VideoTitle = ({ title, overview }) => {
   return (
-    <div className="w-screen aspect-video pt-[13%] px-20 absolute text-white bg-linear-to-r from-black">
-      <h1 className="text-4xl font-bold">{title}</h1>
-      <p className="py-6 text-lg w-1/4">{overview}</p>
-      <div className="flex items-center gap-3">
-        <button className="flex items-center gap-2 bg-white text-black p-3 px-12 text-xl rounded-lg hover:bg-opacity-80 transition">
+    <div className="w-screen md:w-screen aspect-video pt-[13%] px-20 absolute text-white bg-linear-to-r from-black">
+      <h1 className="text-base mt-4  pl-0 md:text-4xl font-bold">{title}</h1>
+
+      <p className="hidden md:inline-block py-6 text-lg w-1/4">{overview}</p>
+
+      <div className=" pl-0 flex items-center gap-3 mt-5 md:mt-0">
+        <button className="flex items-center gap-1.5 md:gap-2 bg-white text-black py-1.5 px-4 md:py-3 md:px-12 text-base md:text-xl rounded-lg hover:bg-opacity-80 transition">
           <svg
-            className="w-6 h-6 fill-current"
+            className="w-4 h-4 md:w-6 md:h-6 fill-current"
             viewBox="0 0 24 24"
             xmlns="http://www.w3.org/2000/svg"
           >
@@ -17,7 +19,8 @@ const VideoTitle = ({ title, overview }) => {
           </svg>
           Play
         </button>
-        <button className="flex items-center gap-2 bg-gray-500 text-white p-3 px-12 text-xl bg-opacity-50 rounded-lg hover:bg-opacity-75 transition">
+
+        <button className="hidden md:flex items-center gap-2 bg-gray-500 text-white p-3 px-12 text-xl bg-opacity-50 rounded-lg hover:bg-opacity-75 transition">
           <svg
             className="w-6 h-6 fill-current"
             viewBox="0 0 24 24"

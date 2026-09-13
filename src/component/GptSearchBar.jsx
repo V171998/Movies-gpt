@@ -66,20 +66,29 @@ const GptSearchBar = () => {
     };
 
     return (
-        <div className="pt-[3%] flex justify-center">
-            <form className="w-1/2 bg-black grid grid-cols-12 " onSubmit={(e)=> e.preventDefault()}> 
-                <input
-                    ref={searchText}
-                    type="text"
-                    className="p-4 m-4 col-span-9"
-                    placeholder="what would you like to watch today?"
-                />
-                <button className="col-span-3 m-4 py-2 px-4 bg-red-700 text-white rounded-lg" onClick={handleGptSearchClick}>
-                    Search
-                </button>
-            </form>
-        </div>
-    )
+      <div className="pt-[30%] md:pt-[3%] flex justify-center px-4">
+        <form
+          className="w-full md:w-1/2 bg-black flex flex-col md:grid md:grid-cols-12 z-10 rounded-lg p-2 md:p-0"
+          // className="w-1/2 bg-black grid grid-cols-12 "
+          onSubmit={(e) => e.preventDefault()}
+        >
+          <input
+            ref={searchText}
+            type="text"
+            className="p-3 m-2 md:p-4 md:m-4 col-span-9 rounded bg-gray-800 text-white"
+            // className="p-4 m-4 col-span-9"
+            placeholder="what would you like to watch today?"
+          />
+          <button
+            className="col-span-3 m-2 md:m-4 py-2 px-4 bg-red-700 text-white rounded-lg hover:bg-red-800"
+            // className="col-span-3 m-4 py-2 px-4 bg-red-700 text-white rounded-lg"
+            onClick={handleGptSearchClick}
+          >
+            Search
+          </button>
+        </form>
+      </div>
+    );
 };
 
 export default GptSearchBar;
