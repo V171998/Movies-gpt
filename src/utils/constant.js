@@ -6,8 +6,7 @@ export const Logo =
     method: "GET",
     headers: {
       accept: "application/json",
-      Authorization:
-        "Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJjMTQwY2JkYTBiOTVlNTc0NmJjN2EzNTZlNjVmMDAwZCIsIm5iZiI6MTc4ODYwMzk3MC4yNTMsInN1YiI6IjZhOWJlZTQyNjQ3NTA0NTk3OWI3OTk1YyIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.ARYjsfS_hqiMVRtQoaViG-_5umGsBLAIeMgHCptJoOY",
+      Authorization: "Bearer " + import.meta.env.VITE_TMDB_API_KEY,
     },
   };
 
@@ -17,3 +16,9 @@ export const Image_CDN_URL = "https://image.tmdb.org/t/p/w780/";
 
 export const BG_IMG_URL =
   "https://assets.nflxext.com/ffe/siteui/vlv3/5efeb1fd-55d2-4799-8d38-e59e15858b9c/web/IN-en-20260427-TRIFECTA-perspective_0933b420-0cb6-4e67-8e9d-3224dc64b517_medium.jpg";
+
+
+
+export const GEMININ_API_KEY = import.meta.env.VITE_GEMINI_API_KEY;
+  
+

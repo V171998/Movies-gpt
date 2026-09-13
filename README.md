@@ -31,6 +31,8 @@
 - Build Movie Card
 - TMDB IMAGE CDN_URL
 - usePopularMovies & useTopRatedMovies Custom Hooks 
+- Building GptSearch 
+- Building Multi Language Page
 
 
 
